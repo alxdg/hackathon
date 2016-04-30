@@ -21,7 +21,7 @@ exports.updateProcessed = function (data, callback) {
       if (err)
          throw err;
       console.log('Inserting %d into processed tweets', data.id);
-      connection.query('INSERT INTO processed (user) VALUES (' + data.user + ')', function () {
+      connection.query('INSERT INTO processed (user) VALUES ("' + data.user + '")', function () {
          callback();
       });
    });

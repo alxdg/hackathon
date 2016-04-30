@@ -8,28 +8,39 @@ and open the template in the editor.
     Author     : alx
 */
 body {
-  /*  background: gray;*/
+   /*  background: gray;*/
 }
 .message {
-  padding-left: 200px;
-  padding-right: 100px;
-  padding-top: 300px; 
-  font-size: 50px;    
+   padding-left: 200px;
+   padding-right: 100px;
+   padding-top: 300px; 
+   font-size: 50px;    
 }
 
 .current-player{
-  padding-left: 250px;
-  padding-right: 100px;
-  padding-top: 30px;
-  font-size: 100px;  
+   padding-left: 250px;
+   padding-right: 100px;
+   padding-top: 30px;
+   font-size: 100px;  
 }
 
 #wall-image {
-  position: absolute;
-  z-index: -10;
-  width:100%;
+   position: absolute;
+   z-index: -10;
+   width:100%;
 }
 
 .queue{
-  font-size: 22px;
+   font-size: 22px;
+}
+
+.modal-header, h4, .close {
+   background-color: #5cb85c;
+   color:white !important;
+   text-align: center;
+   font-size: 30px;
+}
+
+.modal-body{
+   text-align: center;
 }

@@ -3,8 +3,6 @@ var motor = require('./motor');
 var pushButtonPin = 22;
 var intervalId;
 
-
-
 exports.startPolling = function () {
    gpio.open(pushButtonPin, "in", function (err) {
       if (err) {
