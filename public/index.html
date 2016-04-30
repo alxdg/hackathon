@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" href="css/style.css"/>
   </head> 
-  <body ng-controller="queueCtrl">
+  <body ng-controller="queueCtrl" ng-init="startPolling()">
     <img id="wall-image" src="images/wall.jpg">
     <div class="row">
       <div class="span12">
@@ -40,6 +40,8 @@
             </tr>
           </tbody>
         </table>
+        
+        <button ng-click="stopPolling()">Stop</button>
       </div>
     </div>
   </body>
