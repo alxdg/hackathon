@@ -8,7 +8,8 @@ var app = require('../app');
 var debug = require('debug')('server:server');
 var http = require('http');
 //var twitter = require('../twitter');
-var scheduler = require('../scheduler'); 
+var scheduler = require('../scheduler');
+var pushButton = require('../pushbutton');
 
 /**
  * Get port from environment and store in Express.
@@ -36,17 +37,17 @@ console.log('Starting server at http://localhost:%d', port);
  */
 function normalizePort(val) {
    var port = parseInt(val, 10);
-   
+
    if (isNaN(port)) {
       // named pipe
       return val;
    }
-   
+
    if (port >= 0) {
       // port number
       return port;
    }
-   
+
    return false;
 }
 
@@ -58,11 +59,11 @@ function onError(error) {
    if (error.syscall !== 'listen') {
       throw error;
    }
-   
+
    var bind = typeof port === 'string'
            ? 'Pipe ' + port
            : 'Port ' + port;
-   
+
    // handle specific listen errors with friendly messages
    switch (error.code) {
       case 'EACCES':
@@ -93,6 +94,16 @@ function onListening() {
 console.log('Scheduler is polling from database for new messages');
 scheduler.startPolling();
 
+console.log('Start polling the push button');
+pushButton.startPolling();
+
 console.log('Twitter module started');
 //twitter.startPolling();
+
+process.on('SIGINT', function () {
+   require('../database').closeConnections();
+   require('../motor').closePorts();
+   pushButton.closePort();
+   process.exit(1);
+});
 

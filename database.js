@@ -35,8 +35,7 @@ exports.deleteAllData = function () {
    });
 };
 
-process.on('SIGINT', function () {
+exports.closeConnections = function () {
    console.log('closing database conection');
    connection.end();
-   process.exit(1);
-});
+};

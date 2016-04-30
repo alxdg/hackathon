@@ -1,16 +1,17 @@
 var gulp = require('gulp');
 var scp = require('gulp-scp2');
- 
-gulp.task('default', function() {
-  return gulp.src('routes/*.js')
-  .pipe(scp({
-    host: '10.31.2.29',
-    username: 'pi',
-    password: 'RaspberryPi123',
-    dest: '/home/pi/sandbox/hack-server' 
-  }))
-  .on('watch', function(err, a) {
-    console.log(err);
-    console.log(a);
-  });
-});     
+
+gulp.task('default', function () {
+   return gulp.src(['**/*.js', '!node_modules/**/*'])
+           .pipe(scp({
+              host: '10.0.0.79',
+              username: 'pi',
+              password: 'RaspberryPi123',
+              dest: '/home/pi/sandbox/hackathon',
+              watch: function (client) {
+                 client.on('write', function (o) {
+                    console.log('write %s', o.destination);
+                 });
+              }
+           }));
+});
