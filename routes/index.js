@@ -2,11 +2,6 @@ var express = require('express');
 var router = express.Router();
 var database = require('../database');
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
-   res.render('index', {title: 'Express'});
-});
-
 router.get('/queue', function (req, res, next) {
    database.getQueue(function (rows) {
       var queue = [];
