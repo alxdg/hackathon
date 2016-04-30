@@ -1,48 +1,47 @@
 <!DOCTYPE html>
 <html ng-app="myApp" lang="en">
-  <head>
-    <title>Hackathon</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="deps/jquery.min.js"></script>
-    <script src="deps/bootstrap.min.js"></script>
-    <script src="deps/angular.min.js"></script>
-    <script src="js/app.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.css"/>
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
-    <link rel="stylesheet" href="css/style.css"/>
-  </head> 
-  <body ng-controller="queueCtrl" ng-init="startPolling()">
-    <img id="wall-image" src="images/wall.jpg">
-    <div class="row">
-      <div class="span12">
-        <h2 class="message" id="message">
-          Are you the winner???                
-        </h2>
-        <h1 class="current-player">
-          {{ currentPlayer }}
-        </h1>
-          
+   <head>
+      <title>Hackathon</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="deps/jquery.min.js"></script>
+      <script src="deps/bootstrap.min.js"></script>
+      <script src="deps/angular.min.js"></script>
+      <script src="js/app.js"></script>
+      <link rel="stylesheet" href="css/bootstrap.css"/>
+      <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+      <link rel="stylesheet" href="css/style.css"/>
+   </head> 
+   <body ng-controller="queueCtrl" ng-init="startPolling()">
+      <img id="wall-image" src="images/wall.jpg">
+      <div class="row">
+         <div class="span12">
+            <h2 class="message" id="message">
+               Are you the winner???                
+            </h2>
+            <h1 class="current-player">
+               {{ currentPlayer}}
+            </h1>
+
+         </div>
+         <div class="span8 ">
+            <h2>Queue</h2>
+            <table class="table table-striped queue">
+               <thead class="thead-inverse">
+                  <tr>
+                     <th>#User</th>
+                     <th>Tweeted</th>
+                  </tr>
+               </thead>
+               <tbody >
+                  <tr ng-repeat="x in queue">
+                     <td>{{ x.User}}</td>
+                     <td>{{ x.Message}}</td>
+                  </tr>
+               </tbody>
+            </table>
+            <button ng-click="stopPolling()">Stop</button>
+         </div>
       </div>
-      <div class="span8 ">
-        <h2>Queue</h2>
-        <table class="table table-striped queue">
-          <thead class="thead-inverse">
-            <tr>
-              <th>#User</th>
-              <th>Tweeted</th>
-            </tr>
-          </thead>
-          <tbody >
-            <tr ng-repeat="x in queue">
-              <td>{{ x.User }}</td>
-              <td>{{ x.Message }}</td>
-            </tr>
-          </tbody>
-        </table>
-        
-        <button ng-click="stopPolling()">Stop</button>
-      </div>
-    </div>
-  </body>
+   </body>
 </html>
