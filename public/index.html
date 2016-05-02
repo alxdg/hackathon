@@ -13,7 +13,7 @@
       <link rel="stylesheet" href="css/style.css"/>
    </head> 
    <body ng-controller="queueCtrl" ng-init="startPolling()">
-      <img id="wall-image" src="images/wall.jpg">
+      <img id="wall-image" src="images/mp.jpg">
       <div class="row">
          <div class="span12">
             <h2 class="message" id="message">
@@ -22,7 +22,9 @@
             <h1 class="current-player">
                {{ currentPlayer}}
             </h1>
-
+             <div class="current-tweet">
+                 {{currentTweet}}
+             </div>
          </div>
          <div class="span8 ">
             <h2>Queue</h2>
