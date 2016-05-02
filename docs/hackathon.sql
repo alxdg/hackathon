@@ -16,9 +16,11 @@ CREATE TABLE processed (
 CREATE USER 'pi'@'localhost' IDENTIFIED BY 'RaspberryPi123';
 GRANT ALL PRIVILEGES ON *.* TO 'pi'@'localhost';
 
-
 INSERT INTO queue (user, message)VALUES ('#alex', 'this is a test message');
 INSERT INTO queue (user, message)VALUES ('#chris', 'this is another test message');
 INSERT INTO queue (user, message)VALUES ('#doug', 'Tweeting is awesome #GRMMarketing');
 INSERT INTO queue (user, message)VALUES ('#joe', 'I love this thing #Love');
 INSERT INTO queue (user, message)VALUES ('#mike', 'I cant believe what I am seeign #Incredible');
+
+TRUNCATE TABLE queue;
+TRUNCATE TABLE processed;

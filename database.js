@@ -27,6 +27,34 @@ exports.updateProcessed = function (data, callback) {
    });
 };
 
+exports.isUserQueuedOrProcessed = function (user, callback) {
+   connection.query('SELECT * FROM queue WHERE user="' + user + '"', function (err, rows) {
+      if (err) {
+         throw err;
+      }
+
+      if (rows.length === 0) {
+         connection.query('SELECT * FROM processed WHERE user="' + user + '"', function (err, rows) {
+            if (err) {
+               throw err;
+            }
+            callback(rows.length > 0);
+         });
+      } else {
+         callback(true);
+      }
+   });
+};
+
+exports.updateQueue = function (user, message, callback) {
+   connection.query('INSERT INTO queue (user, message) VALUES ("' + user + '", "' + message + '")', function (err, rows) {
+      if (err) {
+         throw err;
+      }
+      callback(rows);
+   });
+};
+
 exports.deleteAllData = function () {
    connection.query('TRUNCATE TABLE queue', function () {
       connection.query('TRUNCATE TABLE processing', function () {

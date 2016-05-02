@@ -7,7 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('server:server');
 var http = require('http');
-//var twitter = require('../twitter');
+var twitter = require('../twitter');
 var scheduler = require('../scheduler');
 var pushButton = require('../pushbutton');
 
@@ -98,7 +98,7 @@ console.log('Start polling the push button');
 pushButton.startPolling();
 
 console.log('Twitter module started');
-//twitter.startPolling();
+twitter.startPolling();
 
 process.on('SIGINT', function () {
    require('../database').closeConnections();
