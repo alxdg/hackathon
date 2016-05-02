@@ -9,11 +9,11 @@ function markAsProcessed(row, callback) {
 }
 
 function rotateMotor(row) {
+   var motorId = parseInt(Math.random() * 2);
    rotating = true;
    require('./sounds').playSound();
-
-   if (parseInt(Math.random()) === 0) {
-      console.log('Rotating motor one');
+   console.log('************* ROTATING MOTOR ' + motorId);
+   if (motorId === 0) {
       motor.rotateMotorOne(function () {
          markAsProcessed(row, function () {
             setTimeout(function () {
@@ -22,7 +22,6 @@ function rotateMotor(row) {
          });
       });
    } else {
-      console.log('Rotating motor two');
       motor.rotateMotorTwo(function () {
          markAsProcessed(row, function () {
             setTimeout(function () {

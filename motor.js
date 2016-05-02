@@ -4,7 +4,7 @@ var motorOnePulsePin = 16;    // header pin 16 = GPIO port 23
 var motorTwoPulsePin = 37;    // header pin 16 = GPIO port 26
 var motorEnablePin = 18;   //Header pin 18 GIIO port 24
 var intervalTime = 50;
-var onTime = 10000;        //THIS CONTROLS HOW LONG THE STEPPER MOTOR ROTATES
+var onTime = 9900;        //THIS CONTROLS HOW LONG THE STEPPER MOTOR ROTATES
 
 //Open port to enable motors
 gpio.open(motorEnablePin, 'output', function (err) {
