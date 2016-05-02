@@ -9,6 +9,8 @@ and open the template in the editor.
 */
 body {
    /*  background: gray;*/
+   color: darkblue;
+   font-family: Times;
 }
 .message {
    padding-left: 200px;
@@ -24,6 +26,16 @@ body {
    font-size: 100px;  
 }
 
+.current-tweet{
+    padding-left:250px;
+    padding-right:50px;
+    padding-top: 30px;
+    font-size: 75px;
+    height: 900px;
+    text-height: 76px;
+    text-wrap: normal;
+    line-height: 76px;
+}
 #wall-image {
    position: absolute;
    z-index: -10;
@@ -43,4 +55,5 @@ body {
 
 .modal-body{
    text-align: center;
+   font-family: Times;
 }
