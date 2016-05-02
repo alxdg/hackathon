@@ -13,6 +13,17 @@ CREATE TABLE processed (
     primary key ( id )
 );
 
+
+--New database
+CREATE TABLE queue (
+    id INT NOT NULL AUTO_INCREMENT,
+    user VARCHAR(30) NOT NULL,
+    message TEXT NOT NULL,
+    timestamp TIMESTAMP,
+    PRIMARY KEY ( id )
+);
+
+
 CREATE USER 'pi'@'localhost' IDENTIFIED BY 'RaspberryPi123';
 GRANT ALL PRIVILEGES ON *.* TO 'pi'@'localhost';
 
