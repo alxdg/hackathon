@@ -1,5 +1,4 @@
 var database = require('./database');
-
 var pauseBeforeNextRotation = 5000;
 var pollingInterval = 1000;
 var rotating = false;
@@ -11,6 +10,7 @@ function markAsProcessed(row, callback) {
 function rotateMotor(row) {
    rotating = true;
    console.log('Rotating motor');
+   require('./sounds').playSound();
    require('./motor').rotate(function () {
       markAsProcessed(row, function () {
          setTimeout(function () {
@@ -18,11 +18,6 @@ function rotateMotor(row) {
          }, pauseBeforeNextRotation);
       });
    });
-//   setTimeout(function () {
-//      markAsProcessed(row, function () {
-//         rotating = false;
-//      });
-//   }, 6000);
 }
 
 exports.startPolling = function () {
