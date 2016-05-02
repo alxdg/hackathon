@@ -1,7 +1,8 @@
 var Sound = require('node-aplay');
-var files = ['roll.wav', 'getup.wav', 'ball.wav'];
+var files = ['roll', 'getup', 'ball', 'downinfront', 'freebies', 'frontrow'];
+var index = 0;
 
 exports.playSound = function () {
-   var fileIndex = parseInt(Math.random() * files.length);
-   new Sound('sounds/' + files[fileIndex]).play();
+   var fileIndex = index++ % files.length;
+   new Sound('sounds/' + files[fileIndex] + '.wav').play();
 };
