@@ -46,7 +46,7 @@ function CheckEntryTime(createdAt){
               }
 }
 
-
+exports.startPolling = function () {
    setInterval(function () {
       console.log('Querying Tweets');
       
@@ -57,4 +57,4 @@ function CheckEntryTime(createdAt){
          processTweets(tweets.statuses);
       });
    }, 6000);
-
+};
