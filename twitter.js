@@ -1,10 +1,10 @@
 var database = require('./database');
 var Twitter = require('twitter');
 var client = new Twitter({
-   consumer_key: 'GbQC5ofeJBTEQ9462NQ5vfPyF',
-   consumer_secret: 'zg3rG31oMOb38dhRlgI54cFhDFlYgKHe0SlDks9NX7dzxPGVWB',
-   access_token_key: '726057548520939520-3HiVGnGLZtBcnEx4An2ueznBinDOW5Q',
-   access_token_secret: 'hmei78uWVQLwwDrEOIL05eYGPD55tCF26xyMlDBFAoRt6'
+    consumer_key: 'GbQC5ofeJBTEQ9462NQ5vfPyF',
+    consumer_secret: 'zg3rG31oMOb38dhRlgI54cFhDFlYgKHe0SlDks9NX7dzxPGVWB',
+    access_token_key: '726057548520939520-3HiVGnGLZtBcnEx4An2ueznBinDOW5Q',
+    access_token_secret: 'hmei78uWVQLwwDrEOIL05eYGPD55tCF26xyMlDBFAoRt6'
 });
 
 function processTweets(tweets) {
@@ -33,28 +33,24 @@ function processTweets(tweets) {
     }
 }
 
-function CheckEntryTime(createdAt){
+function CheckEntryTime(createdAt) {
     var contestStartTime = new Date();
-             contestStartTime.setHours(date.getHours()-1);
-              if(new Date(createdAt) > contestStartTime)
-              {
-                  return true;
-              }
-              else
-              {
-                  return false;
-              }
+    contestStartTime.setHours(contestStartTime.getHours() - 1);
+    if (new Date(createdAt) > contestStartTime)
+    {
+        return true;
+    } else
+    {
+        return false;
+    }
 }
 
 exports.startPolling = function () {
-   setInterval(function () {
-      console.log('Querying Tweets');
-      
-      var query = '#GMRHackBox';
-      console.log(query);
-      client.get('search/tweets', {q: query}, function (error, tweets, response) {
-         console.log('Found %d tweets ', tweets.statuses.length);
-         processTweets(tweets.statuses);
-      });
-   }, 6000);
+    setInterval(function () {
+        console.log('Querying Tweets');
+        client.get('search/tweets', {q: '#GMRHackBox'}, function (error, tweets, response) {
+            console.log('Found %d tweets ', tweets.statuses.length);
+            processTweets(tweets.statuses);
+        });
+    }, 6000);
 };
