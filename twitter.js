@@ -28,7 +28,7 @@ function processTweets(tweets) {
                 }
             });
         } else {
-            console.log('Skipping user ' + user + ' this entry has expired.')
+            console.log('Skipping user ' + user + ' this entry has expired.');
         }
     }
 }
