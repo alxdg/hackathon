@@ -46,9 +46,10 @@ function CheckEntryTime(createdAt) {
 }
 
 exports.startPolling = function () {
+    var config = {q: '#GMRHackBox', count: 100, since_id: 727580059289014300};
     setInterval(function () {
         console.log('Querying Tweets');
-        client.get('search/tweets', {q: '#GMRHackBox'}, function (error, tweets, response) {
+        client.get('search/tweets', config, function (error, tweets, response) {
             console.log('Found %d tweets ', tweets.statuses.length);
             processTweets(tweets.statuses);
         });
