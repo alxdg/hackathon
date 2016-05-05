@@ -8,7 +8,7 @@ gulp.task('default', function () {
       '!nbproject/**/*',
       '!sounds/**/*'
    ]).pipe(scp({
-      host: '10.31.5.120',
+      host: '10.31.2.29',
       username: 'pi',
       password: 'RaspberryPi123',
       dest: '/home/pi/sandbox/hackathon',
